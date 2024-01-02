@@ -1625,7 +1625,7 @@ def add_word():  # добавление слова в словарь
         return render_template("error_templates/access_denied.html", back_button_hidden="true")
     form = WordsForm()
     db_sess = db_session.create_session()
-    image_start_preview = "/static/words_data/tutorial_down.png"
+    image_start_preview = "/static/words_data/tutorial_image.png"
     all_words = get_dict()["words"]
     python_data = {"json_all_words": all_words}
     if form.validate_on_submit():
