@@ -1,0 +1,151 @@
+.bottom-t {
+    margin: 50px 10px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bottom-t-first-layer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.lesson-tasks {
+    min-width: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.lesson-task-column {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    margin: 1rem;
+}
+
+.lesson-task-button{
+    width: 250px;
+}
+
+.trainer-delete-button {
+    margin-left: 0px;
+    margin-bottom: 10px;
+}
+
+.task-buttons {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.test-list-buttons {
+    width: 400px;
+    margin-bottom: 7px;
+}
+
+.test-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pupil-stats-column {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.pupil-stats-holder {
+    width: 375px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 1rem;
+    border: 3px solid var(--red);
+    padding: 0.5rem;
+}
+
+.pupil-statistics-button {
+    max-width: 300px;
+}
+
+
+.page-but {
+    margin: 5px 5px 5px 5px;
+}
+.current_page_button {
+    margin: 0px 0px 0px 0px;
+    border-style: solid;
+    border-color: red;
+    border-width: 5px;
+}
+.item-button{
+    width: 250px;
+    height: 43px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.unstarted-trainer {
+    background-color: var(--orange);
+    color: var(--contrast-orange);
+}
+
+.unfinished-trainer {
+    background-color: var(--yellow);
+    color: var(--contrast-yellow);
+}
+
+.finished-trainer{
+    background-color: var(--green);
+    color: var(--contrast-green);
+}
+
+.lesson-view-heading {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.pupil-data-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin: 2vh;
+}
+
+.test-result-header {
+    margin: 0.5rem;
+}
+
+.lesson-top-buttons-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.lesson-bottom-buttons-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}

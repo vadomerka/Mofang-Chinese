@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="data-container">
+	<h1>Статистика ученика {{ pupil.name }}</h1>
+	<h2>по уроку {{ lesson_name }}</h2>
+</div>
+<div class="pupil-data-container">
+	<a class="btn btn-main" href="/profile/{{ pupil.id }}">{{ pupil.email }}</a>
+	<h3>Выучено слов: {{ words_learned }}</h3>
+	<h3>Просмотрено слов: {{ words_viewed }}</h3>
+	<h3>Пройдено тренажеров: {{ trainers_completed }}</h3>
+	<h3>Непройденных тренажеров: {{ trainers_uncompleted }}</h3>
+	<h3>Пройдено тестов: {{ tests_completed }}</h3>
+	<h3>Непройденных тестов: {{ tests_uncompleted }}</h3>
+</div>
+{% endblock %}
