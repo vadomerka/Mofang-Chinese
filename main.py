@@ -751,7 +751,10 @@ def pupil_courses_view(pupil_id):  # добавление курсов к уче
 
     form = AddItemToSomethingForm()
     all_items = cur_user["courses"]
-    max_id = max([item["id"] for item in all_items])
+    if [item["id"] for item in all_items]:
+        max_id = max([item["id"] for item in all_items])
+    else:
+        max_id = 0
     added_items = list(filter(lambda x: x in pupil["courses"], all_items))
     not_added_items = list(filter(lambda x: x not in pupil["courses"], all_items))
     items_js = {
@@ -964,7 +967,10 @@ def course_pupils_view(course_id):  # добавление учеников к �
     all_users = get_users()["users"]
     all_items = list(filter(lambda x: x["creator"] == current_user.id and not x["teacher"],
                             all_users))
-    max_id = max([item["id"] for item in all_items])
+    if [item["id"] for item in all_items]:
+        max_id = max([item["id"] for item in all_items])
+    else:
+        max_id = 0
     course_users_ids = [u["id"] for u in course["users"]]
     added_items = list(filter(lambda x: x["id"] in course_users_ids, all_items))
     not_added_items = list(filter(lambda x: x not in course["users"], all_items))
@@ -1260,7 +1266,10 @@ def add_words_to_lesson(lesson_id):  # добавляет слова к урок
     lesson = lesson_response["lesson"]
     current_course_id = lesson["course"]["id"]
     all_items = get_dict()["words"]
-    max_id = max([item["id"] for item in all_items])
+    if [item["id"] for item in all_items]:
+        max_id = max([item["id"] for item in all_items])
+    else:
+        max_id = 0
     my_items = list(filter(lambda x: x["author"] == current_user.id, all_items))
     rest_items = list(filter(lambda x: x["author"] != current_user.id, all_items))
     added_items = lesson["words"]
