@@ -41,7 +41,7 @@ mail_settings = {
     "MAIL_PORT": 465,
     "MAIL_USE_TLS": False,
     "MAIL_USE_SSL": True,
-    "MAIL_USERNAME": 'mofangchinese@yandex.com',
+    "MAIL_USERNAME": 'mofangchinese@gmail.com',
     "MAIL_PASSWORD": '8W885fKCnAyV'
 }
 app.config.update(mail_settings)
@@ -2208,7 +2208,8 @@ def change_word(word_id):  # изменить слово
                            translation_audio_file=translation_audio_file,
                            is_translation_audio=is_translation_audio,
                            image_start_preview=image_start_preview,
-                           all_words=all_words, python_data=python_data)
+                           all_words=all_words, python_data=python_data,
+                           back_url="/dictionary")
 
 
 def main():
