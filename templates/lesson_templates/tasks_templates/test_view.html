@@ -2,7 +2,7 @@
 
 {% block content %}
 <h1 id="test-header">Выберете правильный вариант ответа</h1>
-<div class="test-box">
+<div id="test-box" class="test-box" hidden>
 <div class="test">
     <div class="task-box">
         {% if test.check_side < 6 %}
@@ -80,6 +80,7 @@
     var all_words = python_data.all_words;
     var lesson = python_data.lesson_words;
     if (lesson  == "") {document.location.href = "{{ back_url }}"; alert("Урок пуст"); }
+    else { document.getElementById("test-box").hidden = false; }
 
     var task_audio;
     var audio_playing = false;

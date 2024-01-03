@@ -1760,6 +1760,7 @@ def dict_word_view(word_id):  # просмотр слова
             "phrase_ch": word["phrase_ch"],
             "phrase_ru": word["phrase_ru"]
         },
+        # value_if_true if condition else value_if_false
         "audio_urls": {
             "front_audio": url_for("static", filename="/words_data/" + word["front_side_audio"]),
             "left_audio": url_for("static", filename="/words_data/" + word["left_side_audio"]),
