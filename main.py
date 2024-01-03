@@ -41,8 +41,8 @@ mail_settings = {
     "MAIL_PORT": 465,
     "MAIL_USE_TLS": False,
     "MAIL_USE_SSL": True,
-    "MAIL_USERNAME": 'pradomiri@yandex.ru',
-    "MAIL_PASSWORD": 'AMT45gkSn8HeumPa'
+    "MAIL_USERNAME": 'mofangchinese@yandex.com',
+    "MAIL_PASSWORD": '8W885fKCnAyV'
 }
 app.config.update(mail_settings)
 mail = Mail(app)
