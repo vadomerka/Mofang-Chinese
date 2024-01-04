@@ -1649,12 +1649,14 @@ def add_word():  # добавление слова в словарь
         transcription_audio = request.files['transcription_audio']
         phrase_audio = request.files['phrase_audio']
         translation_audio = request.files['translation_audio']
+
         fex1 = "." + transcription_audio.filename.split(".")[-1]
         fex2 = "." + phrase_audio.filename.split(".")[-1]
         fex3 = "." + translation_audio.filename.split(".")[-1]
         path_to_file = os.path.dirname(__file__)
         full_path = os.path.join(path_to_file)
-        save_name = str(hash(str(new_word.id) + "_" + str(new_word.author) + "_" +
+        new_word_id = max([item["id"] for item in get_dict()["words"]]) + 1
+        save_name = str(hash(str(new_word_id) + "_" + str(new_word.author) + "_" +
                              str(new_word.translation) + "_" + str(new_word.hieroglyph)))
         filepath = os.path.join(full_path, "static", "words_data", save_name)
         if image:
@@ -2107,6 +2109,7 @@ def change_word(word_id):  # изменить слово
     prev_transcription = new_word.transcription
     prev_phrase_ch = new_word.phrase_ch
     prev_phrase_ru = new_word.phrase_ru
+    prev_transcription_audio = new_word.front_side_audio
 
     image_filename = os.path.join(full_path, "static", "words_data", new_word.image)
     if not os.path.exists(image_filename):
@@ -2158,6 +2161,7 @@ def change_word(word_id):  # изменить слово
         new_word.phrase_ru = delete_extra_spaces(form.phrase_ru.data)
         image = request.files['image']
         transcription_audio = request.files['transcription_audio']
+        print(request.form.get("translation_audio_delete_input"))
         phrase_audio = request.files['phrase_audio']
         translation_audio = request.files['translation_audio']
         path_to_file = os.path.dirname(__file__)
@@ -2219,6 +2223,7 @@ def change_word(word_id):  # изменить слово
                            is_translation_audio=is_translation_audio,
                            image_start_preview=image_start_preview,
                            all_words=all_words, python_data=python_data,
+                           prev_transcription_audio=prev_transcription_audio,
                            back_url="/dictionary")
 
 

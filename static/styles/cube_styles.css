@@ -146,43 +146,6 @@
     bottom: 0%;
 }
 
-
-.side-image {
-    padding: 10px;
-    max-width: 441px;
-    max-height: 287px;
-}
-
-.file-fields {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.audio-file-fields {
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.audio-file-line {
-    width: 85%;  /* constant */
-    display: flex;
-    align-items: center;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-}
-
-.audio-file-line::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
 .explanation-text {
     font-size: 1.15rem;
     margin: 0px;

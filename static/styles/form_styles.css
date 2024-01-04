@@ -1,0 +1,73 @@
+.form-header {
+    margin: 1rem;
+}
+
+.text-fields {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.text-field-box {
+    border: 0.2rem var(--red) solid;
+    padding: 0.2rem;
+    margin-bottom: -0.2rem;
+}
+
+.text-field-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-label {
+    margin: 0px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-field-input {
+    width: 50%;
+}
+
+.side-image {
+    padding: 10px;
+    max-width: 441px;
+    max-height: 287px;
+}
+
+.file-fields-container {
+    padding: 1rem;
+}
+
+.file-fields {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.audio-file-fields {
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.audio-file-line {
+    width: 85%;  /* constant */
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+}
+
+.audio-file-line::after {
+    content: "";
+    clear: both;
+    display: table;
+}
