@@ -44,30 +44,78 @@
 
 .file-fields {
     display: flex;
-    flex-wrap: nowrap;
     flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.audio-files-container {
+
 }
 
 .audio-file-fields {
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    padding: 0.5rem;
 }
 
 .audio-file-line {
-    width: 85%;  /* constant */
     display: flex;
-    align-items: center;
+    flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    align-items: center;
+    border: 0.2rem var(--red) solid;
+    padding: 0.2rem;
+    margin-bottom: -0.2rem;
 }
 
-.audio-file-line::after {
-    content: "";
-    clear: both;
-    display: table;
+.audio-line-text-container {
+    padding: 0.5rem;
+}
+
+.audio-tools-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.audio-play-container {
+    display: flex;
+}
+
+.audio-upload-container {
+
+}
+
+.audio-delete-container {
+
+}
+
+.image-files-container {
+
+}
+
+.image-file-container {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-label {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.centered-label {
+    margin: 0px;
+}
+
+.centered-header {
+    margin: 0px;
 }

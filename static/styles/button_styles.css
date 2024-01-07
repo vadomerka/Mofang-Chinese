@@ -202,3 +202,8 @@
     background-color: var(--bright-red);
     border-color: var(--bright-red);
 }
+
+.upload-button {
+    width: 46px;
+    height: 46px;
+}

@@ -76,92 +76,138 @@
             {% endfor %}
         </div>
     </div>
-    <div class="center-header-box">
-        <h1 class="form-header">
-            Загрузите файлы для слова
-        </h1>
-    </div>
-    <div class="file-fields-container">    
-        <div class="file-fields">
-            <div class="audio-file-fields">
-                <div class="audio-file-line">
-                    <h2>Добавьте файл озвучки транскрипции</h2>
-                    <audio id="transcription_audio_play" controls></audio>
-                    <input type="file" accept="audio/*"
-                           class="form-control-file" id="transcription_audio"
-                           name="transcription_audio" value='{{ transcription_audio_file }}' hidden>
-                    <label id="transcription_audio_button" for="transcription_audio">
-                        <btn class="btn btn-white centered-button">
-                            Загрузить
-                        </btn>
-                    </label>
-                    <div class="audio-delete">
-                        <input type="text" id="ttranscription_audio_delete_input" name="transcription_audio_delete_input" value="{{ delete_audio_input_state }}" hidden>
-                        <label id="transcription_audio_delete_button-label" for="transcription_audio_delete_button">
-                            <btn id="transcription_audio-delete-button" class="btn btn-danger btn-delete lesson-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
-                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
-                                </svg>
-                            </btn>
+    <div class="file-fields-box">
+        <div class="center-header-box">
+            <h1 class="form-header">
+                Загрузите данные:
+            </h1>
+        </div>
+        <div class="file-fields-container">
+            <div class="file-fields">
+                <div class="audio-files-container">
+                    <div class="center-header-box">
+                        <h2 class="form-header">
+                            Аудио файлы:
+                        </h2>
+                    </div>
+                    <div class="audio-file-fields">
+                        <div class="audio-file-line">
+                            <div class="audio-line-text-container">
+                                <h3 class="audio-line-text-container centered-header">
+                                    Транскрипция:
+                                </h3>
+                            </div>
+                            <div class="audio-tools-container">
+                                <div class="audio-play-container">
+                                    <audio id="transcription_audio_play" controls></audio>
+                                </div>
+                                <div class="audio-upload-container">
+                                    <input type="file" accept="audio/*"
+                                           class="form-control-file" id="transcription_audio"
+                                           name="transcription_audio" value='{{ transcription_audio_file }}' hidden>
+                                    <label class="centered-label" id="transcription_audio_button" for="transcription_audio">
+                                        <btn class="btn btn-white centered-button upload-button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" style="width: 1em;height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1"><path d="M331.294118 783.058824h361.411764v-361.411765h240.941177L512 0 90.352941 421.647059h240.941177zM90.352941 903.529412h843.294118v120.470588h-843.294118z"/></svg>
+                                        </btn>
+                                    </label>
+                                </div>
+                                <div class="audio-delete-container">
+                                    <input type="text" id="transcription_audio_delete_input" name="transcription_audio_delete_input" value="{{ delete_audio_input_state }}" hidden>
+                                    <label class="centered-label" id="transcription_audio_delete_button-label" for="transcription_audio_delete_button">
+                                        <btn id="transcription_audio-delete-button" class="btn btn-danger btn-delete lesson-button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                                            </svg>
+                                        </btn>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="audio-file-line">
+                            <div class="audio-line-text-container">
+                                <h3 class="audio-line-text-container">
+                                    Перевод:
+                                </h3>
+                            </div>
+                            <div class="audio-tools-container">
+                                <div class="audio-play-container">
+                                    <audio id="translation_audio_play" controls></audio>
+                                </div>
+                                <div class="audio-upload-container">
+                                    <input type="file" accept="audio/*"
+                                           class="form-control-file" id="translation_audio"
+                                           name="translation_audio" value='{{ translation_audio_file }}' hidden>
+                                    <label class="centered-label" id="translation_audio_button" for="translation_audio">
+                                        <btn class="btn btn-white centered-button upload-button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" style="width: 1em;height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1"><path d="M331.294118 783.058824h361.411764v-361.411765h240.941177L512 0 90.352941 421.647059h240.941177zM90.352941 903.529412h843.294118v120.470588h-843.294118z"/></svg>
+                                        </btn>
+                                    </label>
+                                </div>
+                                <div class="audio-delete-container">
+                                    <input type="text" id="translation_audio_delete_input" name="translation_audio_delete_input" value="{{ delete_audio_input_state }}" hidden>
+                                    <label class="centered-label" id="translation_audio_delete_button-label" for="translation_audio_delete_button">
+                                        <btn id="translation_audio-delete-button" class="btn btn-danger btn-delete lesson-button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                                            </svg>
+                                        </btn>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                	    <div class="audio-file-line">
+                            <div class="audio-line-text-container">
+                                <h3 class="audio-line-text-container">
+                                    Словосочетание:
+                                </h3>
+                            </div>
+                            <div class="audio-tools-container">
+                                <div class="audio-play-container">
+                    	           <audio id="phrase_audio_play" controls></audio>
+                                </div>
+                                <div class="audio-upload-container">
+                                    <input type="file" accept="audio/*"
+                                           class="form-control-file" id="phrase_audio"
+                                           name="phrase_audio" value='{{ phrase_audio_file }}' hidden>
+                                    <label class="centered-label" id="phrase_audio_button" for="phrase_audio">
+                                        <btn class="btn btn-white centered-button upload-button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon" style="width: 1em;height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1"><path d="M331.294118 783.058824h361.411764v-361.411765h240.941177L512 0 90.352941 421.647059h240.941177zM90.352941 903.529412h843.294118v120.470588h-843.294118z"/></svg>
+                                        </btn>
+                                    </label>
+                                </div>
+                                <div class="audio-delete-container">
+                                    <input type="text" id="phrase_audio_delete_input" name="phrase_audio_delete_input" value="{{ delete_audio_input_state }}" hidden>
+                                    <label class="centered-label" id="phrase_audio_delete_button-label" for="phrase_audio_delete_button">
+                                        <btn id="phrase_audio-delete-button" class="btn btn-danger btn-delete lesson-button">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
+                                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
+                                            </svg>
+                                        </btn>
+                                    </label>
+                                </div>
+                            </div>
+                	    </div>
+                    </div>
+                </div>
+                <div class="image-files-container">
+                    <div class="center-header-box">
+                        <h2 class="form-header">
+                            Картинка:
+                        </h2>
+                    </div>
+                    <div class="image-file-container">
+                        <input type="file" accept="image/*" onchange="fileLoader(event)"
+                               class="form-control-file"
+                               id="image" name="image" value="{{ image_file }}" hidden>
+                        <label class="btn-main image-label" for="image">
+                            <img class="side-image" id="image_output" width="100%" height="100%"
+                                 src="{{ image_start_preview }}">
                         </label>
                     </div>
                 </div>
-                <div class="audio-file-line">
-                    <h2>Добавьте файл озвучки перевода</h2>
-                    <audio id="translation_audio_play" controls></audio>
-                    <input type="file" accept="audio/*"
-                           class="form-control-file" id="translation_audio"
-                           name="translation_audio" value='{{ translation_audio_file }}' hidden>
-                    <label id="translation_audio_button" for="translation_audio">
-                        <btn class="btn btn-white centered-button">
-                            Загрузить
-                        </btn>
-                    </label>
-                    <div class="audio-delete">
-                        <input type="text" id="translation_audio_delete_input" name="translation_audio_delete_input" value="{{ delete_audio_input_state }}" hidden>
-                        <label id="translation_audio_delete_button-label" for="translation_audio_delete_button">
-                            <btn id="translation_audio-delete-button" class="btn btn-danger btn-delete lesson-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
-                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
-                                </svg>
-                            </btn>
-                        </label>
-                    </div>
-                </div>
-        	    <div class="audio-file-line">
-        	        <h2>Добавьте файл озвучки словосочетания</h2>
-        	        <audio id="phrase_audio_play" controls></audio>
-                    <input type="file" accept="audio/*"
-                           class="form-control-file" id="phrase_audio"
-                           name="phrase_audio" value='{{ phrase_audio_file }}' hidden>
-                    <label id="phrase_audio_button" for="phrase_audio">
-                        <btn class="btn btn-white centered-button">
-                            Загрузить
-                        </btn>
-                    </label>
-                    <div class="audio-delete">
-                        <input type="text" id="phrase_audio_delete_input" name="phrase_audio_delete_input" value="{{ delete_audio_input_state }}" hidden>
-                        <label id="phrase_audio_delete_button-label" for="phrase_audio_delete_button">
-                            <btn id="phrase_audio-delete-button" class="btn btn-danger btn-delete lesson-button">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"></path>
-                                    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"></path>
-                                </svg>
-                            </btn>
-                        </label>
-                    </div>
-        	    </div>
-            </div>
-            <div class="image-file">
-                <input type="file" accept="image/*" onchange="fileLoader(event)"
-                       class="form-control-file"
-                       id="image" name="image" value="{{ image_file }}" hidden>
-                <label class="btn-main" for="image">
-                    <img class="side-image" id="image_output" width="100%" height="100%"
-                         src="{{ image_start_preview }}">
-                </label>
             </div>
         </div>
     </div>
@@ -205,62 +251,41 @@
     no_value_color = "red";
     value_color = "green";
 
+    function audioPlayerUploadUpdater(event){
+        var file = this.files[0],
+        fileURL = blob.createObjectURL(file);
+        name = this.name
+        document.getElementById(name + '_play').src = fileURL;
+        document.getElementById(name + '_delete_input').value = "false";
+    }
+
+    function audioPlayerDeleteUpdater(event){
+        name = this.id.slice(0, -14);
+        document.getElementById(name).value = "";
+        document.getElementById(name + '_play').src = "{{ undefined_audio }}";
+        document.getElementById(name + '_delete_input').value = "true";
+    }
+
     // file inputs
     transcription_audio = document.getElementById("transcription_audio");
     translation_audio = document.getElementById("translation_audio");
     phrase_audio = document.getElementById("phrase_audio");
 
-    transcription_audio.addEventListener('change', function(event){
-        var file = this.files[0],
-        fileURL = blob.createObjectURL(file);
-        document.getElementById('transcription_audio_play').src = fileURL;
-        document.getElementById('transcription_audio_delete_input').value = "false";
-    });
+    transcription_audio.addEventListener('change', audioPlayerUploadUpdater);
     document.getElementById('transcription_audio_play').src = "/static/words_data/" + "{{ prev_transcription_audio }}";
     transcription_audio_delete_button = document.getElementById("transcription_audio-delete-button");
-    transcription_audio_delete_button.addEventListener('click', function(event){
-        document.getElementById('transcription_audio').value = "";
-        document.getElementById('transcription_audio_play').src = "{{ undefined_audio }}";
-        document.getElementById('transcription_audio_delete_input').value = "true";
-    });
+    transcription_audio_delete_button.addEventListener('click', audioPlayerDeleteUpdater);
 
     
-    translation_audio.addEventListener('change', function(event){
-        var file = this.files[0],
-        fileURL = blob.createObjectURL(file);
-        console.log(file);
-        console.log('File name: '+file.name);
-        console.log('File type: '+file.type);
-        console.log('File BlobURL: '+ fileURL);
-        document.getElementById('translation_audio_play').src = fileURL;
-        document.getElementById('translation_audio_delete_input').value = "false";
-    });
+    translation_audio.addEventListener('change', audioPlayerUploadUpdater);
     document.getElementById('translation_audio_play').src = "/static/words_data/" + "{{ prev_translation_audio }}";
     translation_audio_delete_button = document.getElementById("translation_audio-delete-button");
-    translation_audio_delete_button.addEventListener('click', function(event){
-        document.getElementById('translation_audio').value = "";
-        document.getElementById('translation_audio_play').src = "{{ undefined_audio }}";
-        document.getElementById('translation_audio_delete_input').value = "true";
-    });
-
+    translation_audio_delete_button.addEventListener('click', audioPlayerDeleteUpdater);
     
-    phrase_audio.addEventListener('change', function(event){
-        var file = this.files[0],
-        fileURL = blob.createObjectURL(file);
-        console.log(file);
-        console.log('File name: '+file.name);
-        console.log('File type: '+file.type);
-        console.log('File BlobURL: '+ fileURL);
-        document.getElementById('phrase_audio_play').src = fileURL;
-        document.getElementById('phrase_audio_delete_input').value = "false";
-    });
+    phrase_audio.addEventListener('change', audioPlayerUploadUpdater);
     document.getElementById('phrase_audio_play').src = "/static/words_data/" + "{{ prev_phrase_audio }}";
     phrase_audio_delete_button = document.getElementById("phrase_audio-delete-button");
-    phrase_audio_delete_button.addEventListener('click', function(event){
-        document.getElementById('phrase_audio').value = "";
-        document.getElementById('phrase_audio_play').src = "{{ undefined_audio }}";
-        document.getElementById('phrase_audio_delete_input').value = "true";
-    });
+    phrase_audio_delete_button.addEventListener('click', audioPlayerDeleteUpdater);
     
     function checkWordUniqueness() {
         var python_data = {{ python_data|tojson }};
