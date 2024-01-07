@@ -1637,6 +1637,11 @@ def add_word():  # добавление слова в словарь
     image_start_preview = "/static/words_data/tutorial_image.png"
     all_words = get_dict()["words"]
     python_data = {"json_all_words": all_words}
+    undefined_audio = "/static/words_data/" + "undefined_trans_audio.mp3"
+    prev_transcription_audio = "undefined_trans_audio.mp3"
+    prev_translation_audio = "undefined_trans_audio.mp3"
+    prev_phrase_audio = "undefined_trans_audio.mp3"
+
     if form.validate_on_submit():
         new_word = Words()
         new_word.author = current_user.id
@@ -1659,34 +1664,38 @@ def add_word():  # добавление слова в словарь
         save_name = str(hash(str(new_word_id) + "_" + str(new_word.author) + "_" +
                              str(new_word.translation) + "_" + str(new_word.hieroglyph)))
         filepath = os.path.join(full_path, "static", "words_data", save_name)
+        delete_audio_inputs = [request.form.get("transcription_audio_delete_input"),
+                               request.form.get("translation_audio_delete_input"),
+                               request.form.get("phrase_audio_delete_input")]
+
         if image:
             image.save(filepath + "_image.png")
             new_word.image = save_name + "_image.png"
         else:
             new_word.image = "undefined_image.png"
 
-        if transcription_audio:
+        if transcription_audio and delete_audio_inputs[0] == "false":
             audfname = filepath + "_trans_audio" + fex1
             transcription_audio.save(audfname)
             new_word.front_side_audio = save_name + "_trans_audio" + fex1
             new_word.right_side_audio = save_name + "_trans_audio" + fex1
-        else:
+        elif delete_audio_inputs[0] == "true":
             new_word.front_side_audio = "undefined_trans_audio.mp3"
             new_word.right_side_audio = "undefined_trans_audio.mp3"
-        if phrase_audio:
+        if translation_audio and delete_audio_inputs[1] == "false":
+            audfname = filepath + "_translation_audio" + fex3
+            translation_audio.save(audfname)
+            new_word.down_side_audio = save_name + "_translation_audio" + fex3
+        elif delete_audio_inputs[1] == "true":
+            new_word.down_side_audio = "undefined_translation_audio.mp3"
+        if phrase_audio and delete_audio_inputs[2] == "false":
             audfname = filepath + "_phrase_audio" + fex2
             phrase_audio.save(audfname)
             new_word.up_side_audio = save_name + "_phrase_audio" + fex2
             new_word.left_side_audio = save_name + "_phrase_audio" + fex2
-        else:
+        elif delete_audio_inputs[2] == "true":
             new_word.up_side_audio = "undefined_phrase_audio.mp3"
             new_word.left_side_audio = "undefined_phrase_audio.mp3"
-        if translation_audio:
-            audfname = filepath + "_translation_audio" + fex3
-            translation_audio.save(audfname)
-            new_word.down_side_audio = save_name + "_translation_audio" + fex3
-        else:
-            new_word.down_side_audio = "undefined_translation_audio.mp3"
 
         new_word.creation_time = dt.datetime.now()
         cur_user = db_sess.query(User).filter(User.id == current_user.id).first()
@@ -1704,7 +1713,12 @@ def add_word():  # добавление слова в словарь
                            filename="tmp",
                            image_start_preview=image_start_preview,
                            back_url="/dictionary",
-                           all_words=all_words, python_data=python_data)
+                           all_words=all_words, python_data=python_data,
+                           prev_transcription_audio=prev_transcription_audio,
+                           prev_translation_audio=prev_translation_audio,
+                           prev_phrase_audio=prev_phrase_audio,
+                           undefined_audio=undefined_audio,
+                           delete_audio_input_state="true")
 
 
 @app.route('/delete_word/<int:word_id>', methods=['GET', 'POST'])
@@ -2110,6 +2124,8 @@ def change_word(word_id):  # изменить слово
     prev_phrase_ch = new_word.phrase_ch
     prev_phrase_ru = new_word.phrase_ru
     prev_transcription_audio = new_word.front_side_audio
+    prev_translation_audio = new_word.up_side_audio
+    prev_phrase_audio = new_word.down_side_audio
 
     image_filename = os.path.join(full_path, "static", "words_data", new_word.image)
     if not os.path.exists(image_filename):
@@ -2121,6 +2137,7 @@ def change_word(word_id):  # изменить слово
     fn2 = os.path.join(full_path, "static", "words_data", new_word.up_side_audio)
     fn3 = os.path.join(full_path, "static", "words_data", new_word.down_side_audio)
     undefined_path = os.path.join(full_path, "static", "words_data", "undefined")
+    undefined_audio = "/static/words_data/" + "undefined_trans_audio.mp3"
     if os.path.exists(fn1):
         transcription_audio_file = open(fn1, mode="r")
     else:
@@ -2161,7 +2178,9 @@ def change_word(word_id):  # изменить слово
         new_word.phrase_ru = delete_extra_spaces(form.phrase_ru.data)
         image = request.files['image']
         transcription_audio = request.files['transcription_audio']
-        print(request.form.get("translation_audio_delete_input"))
+        delete_audio_inputs = [request.form.get("transcription_audio_delete_input"),
+                               request.form.get("translation_audio_delete_input"),
+                               request.form.get("phrase_audio_delete_input")]
         phrase_audio = request.files['phrase_audio']
         translation_audio = request.files['translation_audio']
         path_to_file = os.path.dirname(__file__)
@@ -2175,28 +2194,28 @@ def change_word(word_id):  # изменить слово
         fex1 = "." + transcription_audio.filename.split(".")[-1]
         fex2 = "." + phrase_audio.filename.split(".")[-1]
         fex3 = "." + translation_audio.filename.split(".")[-1]
-        if transcription_audio:
+        if transcription_audio and delete_audio_inputs[0] == "false":
             audfname = filepath + "_trans_audio" + fex1
             transcription_audio.save(audfname)
             new_word.front_side_audio = save_name + "_trans_audio" + fex1
             new_word.right_side_audio = save_name + "_trans_audio" + fex1
-        else:
+        elif delete_audio_inputs[0] == "true":
             new_word.front_side_audio = "undefined_trans_audio.mp3"
             new_word.right_side_audio = "undefined_trans_audio.mp3"
-        if phrase_audio:
+        if translation_audio and delete_audio_inputs[1] == "false":
+            audfname = filepath + "_translation_audio" + fex3
+            translation_audio.save(audfname)
+            new_word.down_side_audio = save_name + "_translation_audio" + fex3
+        elif delete_audio_inputs[1] == "true":
+            new_word.down_side_audio = "undefined_translation_audio.mp3"
+        if phrase_audio and delete_audio_inputs[2] == "false":
             audfname = filepath + "_phrase_audio" + fex2
             phrase_audio.save(audfname)
             new_word.up_side_audio = save_name + "_phrase_audio" + fex2
             new_word.left_side_audio = save_name + "_phrase_audio" + fex2
-        else:
+        elif delete_audio_inputs[2] == "true":
             new_word.up_side_audio = "undefined_phrase_audio.mp3"
             new_word.left_side_audio = "undefined_phrase_audio.mp3"
-        if translation_audio:
-            audfname = filepath + "_translation_audio" + fex3
-            translation_audio.save(audfname)
-            new_word.down_side_audio = save_name + "_translation_audio" + fex3
-        else:
-            new_word.down_side_audio = "undefined_translation_audio.mp3"
         new_word.creation_time = dt.datetime.now()
         cur_user = db_sess.query(User).filter(User.id == cur_user.id).first()
         cur_user.words.append(new_word)
@@ -2224,6 +2243,10 @@ def change_word(word_id):  # изменить слово
                            image_start_preview=image_start_preview,
                            all_words=all_words, python_data=python_data,
                            prev_transcription_audio=prev_transcription_audio,
+                           prev_translation_audio=prev_translation_audio,
+                           prev_phrase_audio=prev_phrase_audio,
+                           undefined_audio=undefined_audio,
+                           delete_audio_input_state="false",
                            back_url="/dictionary")
 
 
